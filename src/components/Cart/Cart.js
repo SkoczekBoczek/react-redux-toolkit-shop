@@ -4,29 +4,26 @@ import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
 const Cart = () => {
-	const isOpen = useSelector((state) => state.ui.isOpen);
 	const cartItems = useSelector((state) => state.cart.items);
 
 	return (
-		isOpen && (
-			<Card className={classes.cart}>
-				<h2>Your Shopping Cart</h2>
-				<ul>
-					{cartItems.map((item) => (
-						<CartItem
-							key={item.id}
-							item={{
-								title: item.name,
-								quantity: item.quantity,
-								id: item.id,
-								total: item.price * item.quantity,
-								price: item.price,
-							}}
-						/>
-					))}
-				</ul>
-			</Card>
-		)
+		<Card className={classes.cart}>
+			<h2>Your Shopping Cart</h2>
+			<ul>
+				{cartItems.map((item) => (
+					<CartItem
+						key={item.id}
+						item={{
+							title: item.name,
+							quantity: item.quantity,
+							id: item.id,
+							total: item.price * item.quantity,
+							price: item.price,
+						}}
+					/>
+				))}
+			</ul>
+		</Card>
 	);
 };
 
